@@ -1,5 +1,5 @@
 import React, {Fragment} from "react";
-import URL from "../../../../../url";
+import {URL} from "../../../../url"
 
 class Repairing extends React.Component {
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../general/css/login.css';
 import { Navigate } from 'react-router-dom';
-import URL from "../../url";
+import {URL} from "../url"
 
 class Login extends React.Component {
 

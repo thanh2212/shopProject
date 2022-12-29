@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import '../../../../../general/css/profile.css'
-import URL from "../../../../../../url"
+import {URL} from "../../../../../url"
 
 class Profile extends React.Component {
     

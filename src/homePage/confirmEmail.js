@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Navigate } from 'react-router-dom';
-import URL from "../../url"
+import {URL} from "../url"
 
 class ConfirmEmail extends React.Component {
     

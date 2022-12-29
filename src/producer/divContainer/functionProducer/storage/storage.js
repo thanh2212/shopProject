@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import '../../../../general/css/storage.css'
-import URL from "../../../../../url"
+import {URL} from "../../../../url"
 
 class Storage extends React.Component {
 

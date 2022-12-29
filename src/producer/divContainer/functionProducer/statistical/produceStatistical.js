@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import React, { Fragment } from "react";
-import URL from "../../../../../url"
+import {URL} from "../../../../url"
 
 class ProduceStatistical extends React.Component {
 

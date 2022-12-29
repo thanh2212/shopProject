@@ -1,5 +1,5 @@
 import React from "react";
-import URL from "../../../../../url";
+import {URL} from "../../../../url"
 
 class NewProduct extends React.Component {
 
