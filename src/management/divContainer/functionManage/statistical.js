@@ -78,9 +78,9 @@ class Statistical extends React.Component {
                 <div className="tableProductLine-select">
                     <label htmlFor='statisticalType'>Thống kê theo:  </label>
                     <select id="statisticalType" onChange={this.changeShow}>
+                        <option value="Trung tâm bảo hành">Trung tâm bảo hành</option>
                         <option value="Cơ sở sản xuất">Cơ sở sản xuất</option>
                         <option value="Đại lý phân phối">Đại lý phân phối</option>
-                        <option value="Trung tâm bảo hành">Trung tâm bảo hành</option>
                     </select>
                 </div>
                 <table className='tableProductLine'>
