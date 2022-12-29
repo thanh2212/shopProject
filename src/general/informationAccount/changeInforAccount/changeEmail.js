@@ -68,7 +68,7 @@ class ChangeEmail extends React.Component {
     newEmail(event) {
         event.preventDefault();
         var newEmail = document.getElementById('newEmail').value;
-        var error = document.getElementsByClassName('errProfile')[0];
+        var error = document.getElementsByClassName('errProfile')[1];
         error.innerHTML = '';
         if (!newEmail) {
             error.innerHTML = 'Bạn chưa nhập email';
@@ -104,7 +104,7 @@ class ChangeEmail extends React.Component {
     done(event) {
         event.preventDefault();
         var otp = document.getElementById('otp2').value;
-        var error = document.getElementsByClassName('errProfile')[0];
+        var error = document.getElementsByClassName('errProfile')[2];
         error.innerHTML = '';
         if (!otp) {
             error.innerHTML = 'Bạn chưa nhập mã OTP';
@@ -117,7 +117,7 @@ class ChangeEmail extends React.Component {
                     alert('Thay đổi email thành công')
                     var main = document.querySelector('main');
                     main.lastChild.style.display = 'none';
-                    main.firstChild.nextSibling.style.display = 'block';
+                    main.firstChild.style.display = 'block';
                 } else error.innerHTML = 'Mã OTP không chính xác'
             }
         }

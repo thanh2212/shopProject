@@ -63,7 +63,7 @@ class ForgotPass extends React.Component {
     enterOtp(event) {
         event.preventDefault();
         var otp = document.getElementById('otp').value;
-        var error = document.getElementsByClassName('errLogin')[0];
+        var error = document.getElementsByClassName('errLogin')[1];
         error.innerHTML = '';
         if (!otp) {
             error.innerHTML = 'Bạn chưa nhập mã OTP';
@@ -91,7 +91,7 @@ class ForgotPass extends React.Component {
         event.preventDefault();
         const password = document.getElementById('password').value;
         const repassword = document.getElementById('repassword').value;
-        var error = document.getElementsByClassName('errLogin')[0];
+        var error = document.getElementsByClassName('errLogin')[2];
         error.innerHTML = '';
         if (!password || !repassword) {
             error.innerHTML = 'Bạn chưa nhập đầy đủ thông tin';
@@ -105,6 +105,7 @@ class ForgotPass extends React.Component {
         xmlHttp.onreadystatechange = function() {
             if (this.readyState === 4) {
                 if (this.status === 200) {
+                    alert("Thành công!\nBạn hãy đăng nhập vào tài khoản của mình")
                     root.login();
                 }
             }
@@ -127,7 +128,7 @@ class ForgotPass extends React.Component {
                         <input type='text' id='email' placeholder='Nhập email để tìm lại mật khẩu'></input>
                         <span className='errLogin'></span>
                         <input type='submit' value='Tiếp theo'></input>
-                        <a href='#!' onClick={this.login}>Quay lại</a>
+                        <a href='#!' onClick={this.login}>Đăng nhập</a>
                     </div>
                 </form>
                 <form className='login' onSubmit={this.enterOtp}>
@@ -142,8 +143,8 @@ class ForgotPass extends React.Component {
                 <form className='login' onSubmit={this.enterPassword}>
                     <div>
                         <h1>Tìm mật khẩu</h1>
-                        <input type='text' name='password' id='passowrd' placeholder='Nhập mật khẩu mới'></input>
-                        <input type='text' id='repassword' placeholder='Nhập lại'></input>
+                        <input type='password' name='password' id='password' placeholder='Nhập mật khẩu mới'></input>
+                        <input type='password' id='repassword' placeholder='Nhập lại'></input>
                         <span className='errLogin'></span>
                         <input type='submit' value='Nhập'></input>
                         <a href='#!' onClick={this.login}>Đăng nhập</a>
