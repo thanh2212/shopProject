@@ -51,9 +51,56 @@ class Details extends React.Component {
 
                     if (data.color) arrInput[3].value = data.color;
                     else arrInput[3].value = '';
-                    
-                    if (data.status) arrInput[4].value = data.status;
-                    else arrInput[4].value = '';
+
+                    switch(data.status) {
+                        case 'new_product': {
+                            arrInput[4].value = 'Mới sản xuất';
+                            break;
+                        }
+                        case 'back_agent': {
+                            arrInput[4].value = 'Đưa về đại lý';
+                            break;
+                        }
+                        case 'sold': {
+                            arrInput[4].value = 'Đã bán';
+                            break;
+                        }
+                        case 'er_service': {
+                            arrInput[4].value = 'Lỗi cần bảo hành';
+                            break;
+                        }
+                        case 'sv_fixing': {
+                            arrInput[4].value = 'Đang bảo hành';
+                            break;
+                        }
+                        case 'sv_fixed': {
+                            arrInput[4].value = 'Đã bảo hành xong';
+                            break;
+                        }
+                        case 'sv_return': {
+                            arrInput[4].value = 'Đã trả lại khách hàng';
+                            break;
+                        }
+                        case 'er_back_factory': {
+                            arrInput[4].value = 'Lỗi cần trả về nhà máy';
+                            break;
+                        }
+                        case 'er_back_production': {
+                            arrInput[4].value = 'Lỗi đã đưa về cơ sở sản xuất';
+                            break;
+                        }
+                        case 'er_recall': {
+                            arrInput[4].value = 'Lỗi cần triệu hồi';
+                            break;
+                        }
+                        case 'overtime_service': {
+                            arrInput[4].value = 'Hết thời gian bảo hành';
+                            break;
+                        }
+                        default: {
+                            arrInput[4].value = 'Trả lại cơ sở sản xuất';
+                        }
+                    }
                     
                     if (data.DoM) arrInput[5].value = data.DoM;
                     else arrInput[5].value = '';

@@ -2,9 +2,21 @@ import React from "react";
 
 class FollowProduct extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.show = this.show.bind(this);
+    }
+
+    show(event) {
+        const productId = event.parentNode.firstChild.innerHTML;
+        this.props.changeProductId(productId);
+        this.props.changeBackType('Theo dõi');
+        this.props.changeTypeProfile('Xem');
+    }
 
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
+        var root = this;
         xmlHttp.onreadystatechange = function() {
             if (this.readyState === 4) {
                 if (this.status === 200) {
@@ -17,9 +29,8 @@ class FollowProduct extends React.Component {
                         id.className = 'columnId';
                         var name = document.createElement('td');
                         var batch = document.createElement('td');
-                        var color = document.createElement('td');
                         var status = document.createElement('td');
-                        var bio = document.createElement('td');
+                        var description = document.createElement('td');
 
                         if (data[i]._id) id.innerHTML = data[i]._id;
                         else id.innerHTML = '';
@@ -29,9 +40,6 @@ class FollowProduct extends React.Component {
                         
                         if (data[i].batch) batch.innerHTML = data[i].batch;
                         else batch.innerHTML = '';
-                        
-                        if (data[i].color) color.innerHTML = data[i].color;
-                        else color.innerHTML = '';
                         
                         switch(data[i].status) {
                             case 'new_product': {
@@ -82,16 +90,19 @@ class FollowProduct extends React.Component {
                                 status.innerHTML = 'Trả lại cơ sở sản xuất';
                             }
                         }
-                        if (data[i].bio) bio.innerHTML = data[i].bio;
-                        else bio.innerHTML = '';
+                        description.innerHTML = 'Xem';
 
                         tr.appendChild(id);
                         tr.appendChild(name);
                         tr.appendChild(batch);
-                        tr.appendChild(color);
                         tr.appendChild(status);
-                        tr.appendChild(bio);
+                        tr.appendChild(description);
                         tbody.appendChild(tr);
+
+                        description.style.cursor = 'pointer';
+                        description.onclick = function() {
+                            root.show(this);
+                        }
                     }
                 } else alert("ERROR!\n" + this.status);
             }
@@ -111,9 +122,8 @@ class FollowProduct extends React.Component {
                         <th className='columnId'>Id</th>
                         <th>Tên</th>
                         <th>Lô</th>
-                        <th>Màu sắc</th>
                         <th>Trạng thái</th>
-                        <th>Thông số</th>
+                        <th>Chi tiết</th>
                     </tr>
                 </thead>
                 <tbody>

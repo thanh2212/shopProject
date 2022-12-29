@@ -20,8 +20,8 @@ class ForgotPass extends React.Component {
         else return false;
     }
 
-    login(event) {
-        this.props.changeInterfaceType(event.target.innerHTML);
+    login() {
+        this.props.changeInterfaceType('Đăng nhập');
     }
 
     enterEmail(event) {
@@ -126,7 +126,7 @@ class ForgotPass extends React.Component {
                         <input type='text' id='email' placeholder='Nhập email để tìm lại mật khẩu'></input>
                         <span className='errLogin'></span>
                         <input type='submit' value='Tiếp theo'></input>
-                        <a href='#!' onClick={this.login}>Đăng nhập</a>
+                        <a href='#!' onClick={this.login}>Quay lại</a>
                     </div>
                 </form>
                 <form className='login' onSubmit={this.enterOtp}>
@@ -141,7 +141,7 @@ class ForgotPass extends React.Component {
                 <form className='login' onSubmit={this.enterPassword}>
                     <div>
                         <h1>Tìm mật khẩu</h1>
-                        <input type='text' id='passowrd' placeholder='Nhập mật khẩu mới'></input>
+                        <input type='text' name='password' id='passowrd' placeholder='Nhập mật khẩu mới'></input>
                         <input type='text' id='repassword' placeholder='Nhập lại'></input>
                         <span className='errLogin'></span>
                         <input type='submit' value='Nhập'></input>

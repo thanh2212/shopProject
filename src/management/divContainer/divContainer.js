@@ -8,6 +8,9 @@ import Profile from "./functionManage/account/manageAccount/profile"
 import InforAccount from "../../general/informationAccount/inforAccount"
 import ChangeEmail from "../../general/informationAccount/changeInforAccount/changeEmail"
 import ChangePassword from "../../general/informationAccount/changeInforAccount/changePassword"
+import Details from "../../general/historyDetails/details"
+import PreliminaryInfor from "../../general/informationAccount/preliminaryInfor"
+import CustomerInfor from "../../general/informationAccount/customerInfor"
 
 class DivContainer extends React.Component {
 
@@ -37,14 +40,30 @@ class FunctionManage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userName: ''
+            productId: 'none',
+            userName: 'none',
+            backType: 'none'
         }
+        this.changeProductId = this.changeProductId.bind(this);
         this.changeUserName = this.changeUserName.bind(this);
+        this.changeBackType = this.changeBackType.bind(this);
     }
 
-    changeUserName(id) {
+    changeBackType(type) {
         this.setState({
-            userName: id
+            backType: type
+        })
+    }
+
+    changeProductId(id) {
+        this.setState({
+            productId: id
+        })
+    }
+
+    changeUserName(name) {
+        this.setState({
+            userName: name
         })
     }
 
@@ -57,9 +76,14 @@ class FunctionManage extends React.Component {
             // Truyền vào 1 function là changeType, function này nhận đc từ cha là DivContainer
             case "Quản lý": return <ManageAccount changeTypeProfile={this.props.changeType} id={this.props.id}
                 changeUserName={this.changeUserName}/>
-            case "Theo dõi": return <FollowProduct id={this.props.id}/>
+            case "Theo dõi": return <FollowProduct id={this.props.id} changeProductId={this.changeProductId}
+                changeBackType={this.changeBackType} changeTypeProfile={this.props.changeType}/>
             case "Thống kê": return <Statistical id={this.props.id}/>
-            case "Xem": return <Profile userName={this.state.userName} changeTypeProfile={this.props.changeType}/>
+            case "Xem": return <Details changeTypeProfile={this.props.changeType} 
+                productId={this.state.productId} changeUserName={this.changeUserName} backType={this.state.backType}/>
+            case "Vị trí kho": return <PreliminaryInfor userName={this.state.userName} changeTypeProfile={this.props.changeType}/>
+            case "Khách hàng": return <CustomerInfor productId={this.state.productId} changeTypeProfile={this.props.changeType}/>
+            case "Chi tiết": return <Profile userName={this.state.userName} changeTypeProfile={this.props.changeType}/>
             case "Thay đổi email": return <ChangeEmail id={this.props.id}/>
             case "Thay đổi mật khẩu": return <ChangePassword id={this.props.id}/>
             default: return <InforAccount id={this.props.id}/>

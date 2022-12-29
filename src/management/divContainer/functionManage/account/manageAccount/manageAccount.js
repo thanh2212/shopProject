@@ -10,7 +10,7 @@ class ManageAccount extends React.Component {
     show(event) {
         const userName = event.parentNode.firstChild.innerHTML;
         this.props.changeUserName(userName);
-        this.props.changeTypeProfile('Xem');
+        this.props.changeTypeProfile('Chi tiết');
     }
 
     componentDidMount() {
