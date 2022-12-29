@@ -1,4 +1,5 @@
 import React from "react"
+import URL from "../../../../url"
 
 class ChangePassword extends React.Component {
     
@@ -28,7 +29,7 @@ class ChangePassword extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/change_password', false);
+        xmlHttp.open('POST', URL + '/auth/change_password', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id

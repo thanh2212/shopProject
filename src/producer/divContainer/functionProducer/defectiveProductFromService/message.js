@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../url"
 
 class Message extends React.Component {
 
@@ -24,7 +25,7 @@ class Message extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/factory/' + link, false);
+        xmlHttp.open('POST', URL + '/factory/' + link, false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_product=' + productId
@@ -100,7 +101,7 @@ class Message extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_error_or_old_nc?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_error_or_old_nc?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../url"
 
 class Received extends React.Component {
 
@@ -67,7 +68,7 @@ class Received extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_error_or_old_ic?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_error_or_old_ic?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

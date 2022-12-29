@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto';
 import React, { Fragment } from "react";
+import URL from "../../../../../../url"
 
 class Statistical extends React.Component {
 
@@ -88,7 +89,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/list_quarter_erservice?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/auth/list_quarter_erservice?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -133,7 +134,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/list_year_erservice?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/auth/list_year_erservice?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -181,7 +182,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/list_month_fixedproduct?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/list_month_fixedproduct?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -229,7 +230,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/list_quarter_fixedproduct?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/list_quarter_fixedproduct?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -274,7 +275,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/list_year_fixedproduct?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/list_year_fixedproduct?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -322,7 +323,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/list_month_failproduct?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/list_month_failproduct?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -370,7 +371,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/list_quarter_failproduct?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/list_quarter_failproduct?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -415,7 +416,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/list_year_failproduct?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/list_year_failproduct?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -464,7 +465,7 @@ class Statistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/list_month_erservice?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/auth/list_month_erservice?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
     /*

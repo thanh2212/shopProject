@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import URL from "../../../url"
 
 class CustomerInfor extends React.Component {
 
@@ -31,7 +32,7 @@ class CustomerInfor extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/infor_customer?id_product=' + this.props.productId, false);
+        xmlHttp.open('GET', URL + '/auth/infor_customer?id_product=' + this.props.productId, false);
         xmlHttp.send(null);
     }
 

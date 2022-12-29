@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../url"
 
 class Fixed extends React.Component {
 
@@ -64,7 +65,7 @@ class Fixed extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/fixed_product?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/fixed_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Navigate } from 'react-router-dom';
+import URL from "../../url"
 
 class ConfirmEmail extends React.Component {
     
@@ -52,7 +53,7 @@ class ConfirmEmail extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/confirm_email', false);
+        xmlHttp.open('POST', URL + '/auth/confirm_email', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id
@@ -80,7 +81,7 @@ class ConfirmEmail extends React.Component {
                 } else error.innerHTML = 'Mã OTP không chính xác'
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/regit_email', false);
+        xmlHttp.open('POST', URL + '/auth/regit_email', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id

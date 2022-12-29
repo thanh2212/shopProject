@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../../url"
 
 class ManageAccount extends React.Component {
 
@@ -64,7 +65,7 @@ class ManageAccount extends React.Component {
                 } else alert('ERROR!\n' + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/manager/list_user?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/manager/list_user?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

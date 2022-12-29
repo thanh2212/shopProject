@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../url"
 
 class CreateAccount extends React.Component {
 
@@ -34,7 +35,7 @@ class CreateAccount extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/manager/create_account', false);
+        xmlHttp.open('POST', URL + '/manager/create_account', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'username=' + username

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../general/css/login.css';
 import { Navigate } from 'react-router-dom';
+import URL from "../../url";
 
 class Login extends React.Component {
 
@@ -73,7 +74,7 @@ class Login extends React.Component {
                 } else error.innerHTML = data.errorMessage;
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/login?username=' + userName + '&password=' + password, false);
+        xmlHttp.open('GET', URL + '/auth/login?username=' + userName + '&password=' + password, false);
         xmlHttp.send(null);
     }
 

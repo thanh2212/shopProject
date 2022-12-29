@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../url"
 
 class ExportForAgent extends React.Component {
 
@@ -67,7 +68,7 @@ class ExportForAgent extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_product_to_agent?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_product_to_agent?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

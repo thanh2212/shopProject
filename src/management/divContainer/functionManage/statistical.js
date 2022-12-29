@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import URL from "../../../../url"
 
 class Statistical extends React.Component {
 
@@ -56,7 +57,7 @@ class Statistical extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/manager/list_all_product', false);
+        xmlHttp.open('POST', URL + '/manager/list_all_product', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id

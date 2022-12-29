@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import URL from "../../../../../url"
 
 class Storage extends React.Component {
 
@@ -42,7 +43,7 @@ class Storage extends React.Component {
                         }
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/service/send_product_to_factory', false);
+                xmlHttp.open('POST', URL + '/service/send_product_to_factory', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId
@@ -85,7 +86,7 @@ class Storage extends React.Component {
                         }
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/service/send_product_to_agent', false);
+                xmlHttp.open('POST', URL + '/service/send_product_to_agent', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId
@@ -167,7 +168,7 @@ class Storage extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/all_fixing_product?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/all_fixing_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

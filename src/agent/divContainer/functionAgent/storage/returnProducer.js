@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import URL from "../../../../../url";
 
 class ReturnProducer extends React.Component {
 
@@ -55,7 +56,7 @@ class ReturnProducer extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/agent/list_back_production?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/agent/list_back_production?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

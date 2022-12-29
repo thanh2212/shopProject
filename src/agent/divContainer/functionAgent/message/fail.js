@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import URL from "../../../../../url"
 
 class Fail extends React.Component {
 
@@ -55,7 +56,7 @@ class Fail extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/agent/list_error_product?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/agent/list_error_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

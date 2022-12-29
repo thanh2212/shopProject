@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../url"
 
 class FollowProduct extends React.Component {
 
@@ -107,7 +108,7 @@ class FollowProduct extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/manager/all_product?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/manager/all_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
     /*

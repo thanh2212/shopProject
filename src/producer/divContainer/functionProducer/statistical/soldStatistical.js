@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto';
 import React, { Fragment } from "react";
+import URL from "../../../../../url"
 
 class SoldStatistical extends React.Component {
 
@@ -68,7 +69,7 @@ class SoldStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/list_year_backagent?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/auth/list_year_backagent?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -116,7 +117,7 @@ class SoldStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/list_quarter_backagent?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/auth/list_quarter_backagent?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -164,7 +165,7 @@ class SoldStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/list_month_backagent?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/auth/list_month_backagent?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

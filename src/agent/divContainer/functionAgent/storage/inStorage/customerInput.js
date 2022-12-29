@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import URL from "../../../../../../url";
 
 class CustomerInput extends React.Component {
 
@@ -35,7 +36,7 @@ class CustomerInput extends React.Component {
                         }
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/agent/sell_product', false);
+                xmlHttp.open('POST', URL + '/agent/sell_product', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId

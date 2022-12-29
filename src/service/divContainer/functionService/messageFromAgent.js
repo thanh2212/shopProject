@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../../url"
 
 class MessageFromAgent extends React.Component {
 
@@ -20,7 +21,7 @@ class MessageFromAgent extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/service/take_service_product', false);
+        xmlHttp.open('POST', URL + '/service/take_service_product', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_product=' + productId
@@ -97,7 +98,7 @@ class MessageFromAgent extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/service/service_product?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/service/service_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

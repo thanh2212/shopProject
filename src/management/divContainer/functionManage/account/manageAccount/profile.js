@@ -1,5 +1,6 @@
 import React, { Fragment } from "react"
 import '../../../../../general/css/profile.css'
+import URL from "../../../../../../url"
 
 class Profile extends React.Component {
     
@@ -25,7 +26,7 @@ class Profile extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/manager/delete_account', false);
+        xmlHttp.open('POST', URL + '/manager/delete_account', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'username=' + this.props.userName
@@ -61,7 +62,7 @@ class Profile extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/manager/get_profile_by_username?username=' + this.props.userName, false);
+        xmlHttp.open('GET', URL + '/manager/get_profile_by_username?username=' + this.props.userName, false);
         xmlHttp.send(null);
     }
 

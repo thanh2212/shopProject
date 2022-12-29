@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import URL from "../../../url"
 
 class Details extends React.Component {
 
@@ -122,7 +123,7 @@ class Details extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/infor_product?id_product=' + this.props.productId, false);
+        xmlHttp.open('GET', URL + '/auth/infor_product?id_product=' + this.props.productId, false);
         xmlHttp.send(null);
 
         const xmlHttpHistory = new XMLHttpRequest();
@@ -168,7 +169,7 @@ class Details extends React.Component {
                 }
             }
         }
-        xmlHttpHistory.open('GET', 'http://localhost:8000/auth/history?id_product=' + this.props.productId, false);
+        xmlHttpHistory.open('GET', URL + '/auth/history?id_product=' + this.props.productId, false);
         xmlHttpHistory.send(null);
     }
 

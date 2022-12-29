@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../../../url";
 
 class Fixed extends React.Component {
 
@@ -21,7 +22,7 @@ class Fixed extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/agent/receive_fixed', false);
+        xmlHttp.open('POST', URL + '/agent/receive_fixed', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_product=' + productId
@@ -85,7 +86,7 @@ class Fixed extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/agent/list_fixed_product_nc?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/agent/list_fixed_product_nc?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

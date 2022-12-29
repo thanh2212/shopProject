@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import URL from "../../url"
 
 class ForgotPass extends React.Component {
 
@@ -52,7 +53,7 @@ class ForgotPass extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/forget_password', false);
+        xmlHttp.open('POST', URL + '/auth/forget_password', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'email=' + email
@@ -82,7 +83,7 @@ class ForgotPass extends React.Component {
                 } else error.innerHTML = 'Mã OTP không chính xác'
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/check_passwordrc?otp=' + otp, false);
+        xmlHttp.open('GET', URL + '/auth/check_passwordrc?otp=' + otp, false);
         xmlHttp.send(null)
     }
 
@@ -108,7 +109,7 @@ class ForgotPass extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/change_password', false);
+        xmlHttp.open('POST', URL + '/auth/change_password', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.state.id

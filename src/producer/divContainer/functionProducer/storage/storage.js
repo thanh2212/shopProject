@@ -1,5 +1,6 @@
 import React, { Fragment } from "react"
 import '../../../../general/css/storage.css'
+import URL from "../../../../../url"
 
 class Storage extends React.Component {
 
@@ -31,7 +32,7 @@ class Storage extends React.Component {
                     }
                 }
             }
-            xmlHttp.open('POST', 'http://localhost:8000/auth/search_user_by_keyword', false);
+            xmlHttp.open('POST', URL + '/auth/search_user_by_keyword', false);
             xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlHttp.send(
                 'type_user=ag'
@@ -73,7 +74,7 @@ class Storage extends React.Component {
                         } else error.innerHTML = 'Không tìm thấy đại lý'
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/factory/send_product_to_agent', false);
+                xmlHttp.open('POST', URL + '/factory/send_product_to_agent', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId
@@ -162,7 +163,7 @@ class Storage extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_new_product?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_new_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

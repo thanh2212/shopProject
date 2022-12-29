@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import URL from "../../../../../url"
 
 class ImportProductBatch extends React.Component {
 
@@ -100,7 +101,7 @@ class ImportProductBatch extends React.Component {
                     }
                 }
             }
-            xmlHttp.open('POST', 'http://localhost:8000/factory/entry_product', false);
+            xmlHttp.open('POST', URL + '/factory/entry_product', false);
             xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlHttp.send(
                 'id_user=' + id_user

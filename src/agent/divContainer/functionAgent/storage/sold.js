@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import URL from "../../../../../url";
 
 class Sold extends React.Component {
 
@@ -31,7 +32,7 @@ class Sold extends React.Component {
                     }
                 }
             }
-            xmlHttp.open('POST', 'http://localhost:8000/auth/search_user_by_keyword', false);
+            xmlHttp.open('POST', URL + '/auth/search_user_by_keyword', false);
             xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlHttp.send(
                 'type_user=sc'
@@ -73,7 +74,7 @@ class Sold extends React.Component {
                         }
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/agent/recall', false);
+                xmlHttp.open('POST', URL + '/agent/recall', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId
@@ -121,7 +122,7 @@ class Sold extends React.Component {
                         } else error2.innerHTML = 'Không tìm thấy TTBH'
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/agent/service_product', false);
+                xmlHttp.open('POST', URL + '/agent/service_product', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId
@@ -204,7 +205,7 @@ class Sold extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/agent/list_sold?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/agent/list_sold?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

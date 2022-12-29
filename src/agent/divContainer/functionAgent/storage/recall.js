@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import URL from "../../../../../url";
 
 class Recall extends React.Component {
 
@@ -30,7 +31,7 @@ class Recall extends React.Component {
                     }
                 }
             }
-            xmlHttp.open('POST', 'http://localhost:8000/auth/search_user_by_keyword', false);
+            xmlHttp.open('POST', URL + '/auth/search_user_by_keyword', false);
             xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xmlHttp.send(
                 'type_user=sc'
@@ -77,7 +78,7 @@ class Recall extends React.Component {
                         }
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/agent/receive_recall', false);
+                xmlHttp.open('POST', URL + '/agent/receive_recall', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId
@@ -165,7 +166,7 @@ class Recall extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/agent/list_recall_product?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/agent/list_recall_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

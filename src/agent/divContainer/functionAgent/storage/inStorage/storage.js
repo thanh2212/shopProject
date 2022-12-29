@@ -1,4 +1,5 @@
 import React, {Fragment} from "react";
+import URL from "../../../../../../url";
 
 class Storage extends React.Component {
 
@@ -42,7 +43,7 @@ class Storage extends React.Component {
                         }
                     }
                 }
-                xmlHttp.open('POST', 'http://localhost:8000/agent/return_old_product', false);
+                xmlHttp.open('POST', URL + '/agent/return_old_product', false);
                 xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 xmlHttp.send(
                     'id_product=' + prId
@@ -154,7 +155,7 @@ class Storage extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/agent/list_new_product_ic?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/agent/list_new_product_ic?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

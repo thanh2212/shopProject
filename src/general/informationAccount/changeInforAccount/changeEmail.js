@@ -1,4 +1,5 @@
-import React, { Fragment } from "react"
+import React, { Fragment } from "react";
+import URL from "../../../../url"
 
 class ChangeEmail extends React.Component {
 
@@ -30,7 +31,7 @@ class ChangeEmail extends React.Component {
                 } else alert(this.status);
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/req_change_email', false);
+        xmlHttp.open('POST', URL + '/auth/req_change_email', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id
@@ -56,7 +57,7 @@ class ChangeEmail extends React.Component {
                 } else error.innerHTML = 'Mã OTP không chính xác'
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/regit_email', false);
+        xmlHttp.open('POST', URL + '/auth/regit_email', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id
@@ -92,7 +93,7 @@ class ChangeEmail extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/confirm_email', false);
+        xmlHttp.open('POST', URL + '/auth/confirm_email', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id
@@ -120,7 +121,7 @@ class ChangeEmail extends React.Component {
                 } else error.innerHTML = 'Mã OTP không chính xác'
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/regit_email', false);
+        xmlHttp.open('POST', URL + '/auth/regit_email', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id

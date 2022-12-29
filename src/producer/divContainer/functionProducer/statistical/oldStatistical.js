@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto';
 import React, { Fragment } from "react";
+import URL from "../../../../../url"
 
 class OldStatistical extends React.Component {
 
@@ -68,7 +69,7 @@ class OldStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_year_backproduction?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_year_backproduction?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -116,7 +117,7 @@ class OldStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_quarter_backproduction?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_quarter_backproduction?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
@@ -164,7 +165,7 @@ class OldStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_month_backproduction?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_month_backproduction?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

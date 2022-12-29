@@ -35,7 +35,7 @@ class PreliminaryInfor extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/get_profile_by_name', false);
+        xmlHttp.open('POST', URL + '/auth/get_profile_by_name', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'name=' + this.props.userName

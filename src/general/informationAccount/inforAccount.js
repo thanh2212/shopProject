@@ -1,4 +1,5 @@
 import React from "react";
+import URL from "../../../url"
 
 class InforAccount extends React.Component {
 
@@ -53,7 +54,7 @@ class InforAccount extends React.Component {
                 }
             }
         }
-        xmlHttp.open('POST', 'http://localhost:8000/auth/edit_profile', false);
+        xmlHttp.open('POST', URL + '/auth/edit_profile', false);
         xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlHttp.send(
             'id_user=' + this.props.id
@@ -105,7 +106,7 @@ class InforAccount extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/auth/my_profile?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/auth/my_profile?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 

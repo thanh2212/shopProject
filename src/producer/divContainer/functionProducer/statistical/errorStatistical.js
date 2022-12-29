@@ -1,5 +1,6 @@
 import Chart from 'chart.js/auto';
 import React, { Fragment } from "react";
+import URL from "../../../../../url"
 
 class ErrorStatistical extends React.Component {
 
@@ -44,7 +45,7 @@ class ErrorStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_productline_fail?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_productline_fail?id_user=' + this.props.id, false);
         xmlHttp.send(null); 
     }
 
@@ -77,7 +78,7 @@ class ErrorStatistical extends React.Component {
                 }
             }
         }
-        xmlHttp.open('GET', 'http://localhost:8000/factory/list_agent_fail?id_user=' + this.props.id, false);
+        xmlHttp.open('GET', URL + '/factory/list_agent_fail?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
 
