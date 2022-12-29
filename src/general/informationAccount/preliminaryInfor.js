@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import {URL} from "../../url"
 
 class PreliminaryInfor extends React.Component {
 
