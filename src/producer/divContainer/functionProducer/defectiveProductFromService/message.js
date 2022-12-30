@@ -9,9 +9,7 @@ class Message extends React.Component {
         this.show = this.show.bind(this);
     }
 
-    /*
-        Xử lý event producer click xác nhận là đã nhận đc sản phẩm lỗi/cũ từ service
-    */
+    // Nhận sản phẩm cũ/ lỗi
     receiveProduct(event) {
         const productId = event.parentNode.firstChild.innerHTML;
         var status = event.previousSibling.previousSibling.innerHTML;
@@ -36,7 +34,9 @@ class Message extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -45,6 +45,7 @@ class Message extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Lấy ra các sản phẩm lỗi/ cũ do agent, service gửi đến producer mà producer chưa nhận
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -105,9 +106,7 @@ class Message extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI thông báo sản phẩm lỗi cho producer
-    */
+    // UI thông báo sản phẩm lỗi/cũ được gửi đến producer
     render() {
         return(
             <table className='tableProductLine'>

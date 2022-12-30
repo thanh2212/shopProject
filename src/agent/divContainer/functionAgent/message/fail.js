@@ -9,7 +9,9 @@ class Fail extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -18,6 +20,7 @@ class Fail extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Load lần đầu
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -60,10 +63,7 @@ class Fail extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product đại lý gửi cho trung tâm bảo hành mà trung tâm bảo hành không sửa chữa được (bị lỗi) thì
-        trung tâm bảo hành sẽ gửi lại cơ sở sản xuất
-    */
+    // Interface của agent thông báo các sản phẩm lỗi mà TTBH chuyển về CSSX
     render() {
 
         return(

@@ -8,10 +8,12 @@ class Statistical extends React.Component {
         this.changeShow = this.changeShow.bind(this);
     }
 
+    // Thay đổi kiểu thống kê
     changeShow() {
         this.componentDidMount();
     }
 
+    // Lấy ra value của select để gửi request thống kê theo kiểu đó
     componentDidMount() {
         var table = document.querySelector('table');
         var oldTbody = document.querySelector('tbody');
@@ -59,12 +61,8 @@ class Statistical extends React.Component {
                 } else alert("ERROR!\n" + this.status);
             }
         }
-        xmlHttp.open('POST', URL + '/manager/list_all_product', false);
-        xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlHttp.send(
-            'id_user=' + this.props.id
-            + '&namespace=' + type
-        );
+        xmlHttp.open('GET', URL + '/manager/list_all_product?id_user=' + this.props.id + '&namespace=' + type, false);
+        xmlHttp.send(null);
     }
 
     /*
@@ -80,9 +78,9 @@ class Statistical extends React.Component {
                 <div className="tableProductLine-select">
                     <label htmlFor='statisticalType'>Thống kê theo:  </label>
                     <select id="statisticalType" onChange={this.changeShow}>
-                        <option value="Trung tâm bảo hành">Trung tâm bảo hành</option>
-                        <option value="Cơ sở sản xuất">Cơ sở sản xuất</option>
-                        <option value="Đại lý phân phối">Đại lý phân phối</option>
+                        <option value="sv">Trung tâm bảo hành</option>
+                        <option value="pu">Cơ sở sản xuất</option>
+                        <option value="ag">Đại lý phân phối</option>
                     </select>
                 </div>
                 <table className='tableProductLine'>

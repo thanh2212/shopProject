@@ -32,7 +32,9 @@ class MessageFromAgent extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -41,7 +43,7 @@ class MessageFromAgent extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
-
+    // Lấy ra danh sách sản phẩm agent gửi đến để bảo hành mà service chưa nhận
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -102,9 +104,7 @@ class MessageFromAgent extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI thông báo sản phẩm lỗi cho producer
-    */
+    // UI thông báo các sản phẩm đc agent gửi đến để bảo hành mà service chưa nhận
     render() {
         return(
             <table className='tableProductLine'>

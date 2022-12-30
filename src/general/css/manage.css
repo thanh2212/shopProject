@@ -1,4 +1,4 @@
-/*---------------------------------All table trong trang của ban điều hành-----------------------------------------------*/
+/*---------------------------------All table-----------------------------------------------*/
 /*table*/
 .tableProductLine {
     margin-left: 5%;
@@ -45,6 +45,7 @@
 }
 
 @media (max-width: 900px) {
+    /*Màn hình nhỏ thì ẩn cột id*/
     .columnId {
         display: none;
     }

@@ -19,6 +19,7 @@ main {
         rgba(var(--cui-elevation-base-color,60,75,100),.12),0 1px 3px 0 rgba(var(--cui-elevation-base-color,60,75,100),.2);
 }
 
+/*---------------CSS riêng cho biểu đồ tròn-------------------*/
 #chartCircle {
     position: relative;
     width: 60%;

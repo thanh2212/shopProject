@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import React, { Fragment } from "react";
-import {URL} from "../../../../url"
+import {URL} from "../../../../url";
 
 class SoldStatistical extends React.Component {
 
@@ -11,6 +11,7 @@ class SoldStatistical extends React.Component {
         this.quarter = this.quarter.bind(this);
     }
 
+    // Thay đổi kiểu thống kê
     changeStatisticalType(event) {
         var type = event.target.value;
         switch(type) {
@@ -28,6 +29,7 @@ class SoldStatistical extends React.Component {
         }
     }
 
+    // Thống kê theo năm
     year() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -73,6 +75,7 @@ class SoldStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê theo quý
     quarter() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -121,6 +124,7 @@ class SoldStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Load lần đầu là thống kê theo tháng
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -169,9 +173,7 @@ class SoldStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-      UI theo dõi sản phẩm (tương ứng với mục theo dõi trong thanh menu)  
-    */
+    // UI thống kê sản phẩm bán ra của agent
     render() {
 
         return (

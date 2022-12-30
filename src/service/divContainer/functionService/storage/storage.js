@@ -10,8 +10,11 @@ class Storage extends React.Component {
         this.sendToProducer = this.sendToProducer.bind(this);
         this.changeBackgorund = this.changeBackgorund.bind(this);
     }
+    
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.nextSibling.innerHTML;
@@ -25,13 +28,13 @@ class Storage extends React.Component {
     */
     sendToProducer(event) {
         event.preventDefault();
-        var error1 = document.getElementsByClassName('errRepair1')[0];
-        var error2 = document.getElementsByClassName('errRepair2')[0];
+        var error1 = document.getElementsByClassName('errRepair1')[0]; // span hiển thị lỗi
+        var error2 = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error1.innerHTML = '';
         error2.innerHTML = '';
         // Mảng tr có phần tử đầu tiên là th
         var tr = document.querySelectorAll("tr");
-        var countChecked = 0;
+        var countChecked = 0; // Đếm số lượng sản phẩm checked
         for (var i = 1; i < tr.length; i++) {
             if (tr[i].firstChild.firstChild.checked) {
                 const prId = tr[i].firstChild.nextSibling.innerHTML;
@@ -68,13 +71,13 @@ class Storage extends React.Component {
     */
     returnAgent(event) {
         event.preventDefault();
-        var error1 = document.getElementsByClassName('errRepair1')[0];
-        var error2 = document.getElementsByClassName('errRepair2')[0];
+        var error1 = document.getElementsByClassName('errRepair1')[0]; // span hiển thị lỗi
+        var error2 = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error1.innerHTML = '';
         error2.innerHTML = '';
         // Mảng tr có phần tử đầu tiên là th
         var tr = document.querySelectorAll("tr");
-        var countChecked = 0;
+        var countChecked = 0; // Đếm số lượng sản phẩm checked
         for (var i = 1; i < tr.length; i++) {
             if (tr[i].firstChild.firstChild.checked) {
                 const prId = tr[i].firstChild.nextSibling.innerHTML;
@@ -106,9 +109,7 @@ class Storage extends React.Component {
         }
     }
 
-    /*
-        Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
-    */
+    // Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
     changeBackgorund(event) {
         var input = event
         var td = event.parentNode
@@ -117,6 +118,7 @@ class Storage extends React.Component {
         else td.parentNode.style.background = "white";
     }
 
+    // Lấy ra danh sách sản phẩm đang được sửa chữa
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -172,9 +174,7 @@ class Storage extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product trong storage of producer và producer có thể tick chọn để xuất hàng cho đại lý
-    */
+    // UI danh sách sản phẩm đang được sửa chữa của service
     render() {
         return(
             <Fragment>

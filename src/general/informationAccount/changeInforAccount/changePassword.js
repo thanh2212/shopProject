@@ -8,11 +8,12 @@ class ChangePassword extends React.Component {
         this.changePassword = this.changePassword.bind(this);
     }
 
+    // Lấy ra password, repassword user nhập vào, thực hiện kiểm tra và gửi lên server
     changePassword(event) {
         event.preventDefault();
         const newPassword = document.getElementById('newPassword').value;
         const repassword = document.getElementById('repassword').value;
-        var error = document.getElementsByClassName('errProfile')[0];
+        var error = document.getElementsByClassName('errProfile')[0]; // span hiển thị lỗi
         error.innerHTML = '';
         if (!newPassword || !repassword) {
             error.innerHTML = 'Bạn chưa nhập đầy đủ thông tin';
@@ -38,17 +39,11 @@ class ChangePassword extends React.Component {
         )
     }
 
+    // UI thay đổi mật khẩu
     render() {
-        /*
-            UI profile sơ bộ của tài khoản cho tài khoản khác xem
-        */
         return(
             <form className="profile" onSubmit={this.changePassword}>
                 <h1>Thay đổi mật khẩu</h1>
-
-                {/* <label htmlFor='oldPassword'>Mật khẩu cũ</label>
-                <input type='password' id='oldPassword' required></input>
-                <br></br> */}
 
                 <label htmlFor='newPassword'>Mật khẩu mới</label>
                 <input type='password' id='newPassword'></input>

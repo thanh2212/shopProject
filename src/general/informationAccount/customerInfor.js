@@ -8,10 +8,12 @@ class CustomerInfor extends React.Component {
         this.back = this.back.bind(this);
     }
 
+    // Quay lại trang trước là xem chi tiết sản phẩm (Details)
     back() {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Lấy ra thông tin của khách hàng thông qua id sản phẩm
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -36,10 +38,8 @@ class CustomerInfor extends React.Component {
         xmlHttp.send(null);
     }
 
+    // UI thông tin khách hàng mua sản phẩm
     render() {
-        /*
-            UI profile sơ bộ của tài khoản cho tài khoản khác xem
-        */
         return(
             <Fragment>
                 <form className="profile">
@@ -56,10 +56,6 @@ class CustomerInfor extends React.Component {
                     <label htmlFor='phone'>Số điện thoại</label>
                     <input type='phone' id='phone' readOnly></input>
                     <br></br>
-
-                    {/* <label htmlFor='description'>Thông tin thêm</label>
-                    <textarea id="description" readOnly></textarea>
-                    <br></br> */}
                 </form>
                 <i className='fas fa-arrow-circle-left' onClick={this.back}></i>
             </Fragment>

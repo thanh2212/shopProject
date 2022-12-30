@@ -8,6 +8,7 @@ class CreateAccount extends React.Component {
         this.create = this.create.bind(this);
     }
 
+    // Lấy ra các thông tin user nhập thực hiện kiểm tra và gửi request tạo account
     create(event) {
         event.preventDefault();
         const arrInput = document.querySelectorAll('input');
@@ -15,8 +16,9 @@ class CreateAccount extends React.Component {
         const password = arrInput[1].value;
         const repassword = arrInput[2].value;
         const user_type = document.querySelector('select').value;
-        var error = document.getElementsByClassName('errProfile')[0];
+        var error = document.getElementsByClassName('errProfile')[0]; // span hiển thị lỗi
         error.innerHTML = '';
+        // Kiểm tra các input user nhập vào
         if (!username || !password || !repassword) {
             error.innerHTML = 'Bạn chưa nhập đầy đủ thông tin';
             return;
@@ -45,9 +47,7 @@ class CreateAccount extends React.Component {
         )
     }
 
-    /*
-      UI cấp tài khoản (ứng với mục cấp tài khoản (mục này là mục con của mục quản lý tài khoản trong thanh menu))  
-    */
+    // UI tạo tài khoản của ban quản lý
     render() {
         return (
             <form className="createAccount" onSubmit={this.create}>

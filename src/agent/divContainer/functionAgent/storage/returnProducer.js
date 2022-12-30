@@ -7,8 +7,11 @@ class ReturnProducer extends React.Component {
         super(props);
         this.show = this.show.bind(this);
     }
+    
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -17,6 +20,7 @@ class ReturnProducer extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Load lần đầu lấy ra các sản phẩm cũ trả về cho producer
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -60,9 +64,7 @@ class ReturnProducer extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product lâu không bán được và đem trả lại cho cơ sở sản xuất
-    */
+    // UI các sản phẩm cũ trả lại cho producer của agent
     render() {
 
         return(

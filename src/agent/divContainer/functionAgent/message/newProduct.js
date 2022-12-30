@@ -9,9 +9,7 @@ class NewProduct extends React.Component {
         this.show = this.show.bind(this);
     }
 
-    /*
-        Xử lý event đại lý click xác nhận là đã nhận đc sản phẩm mới từ cơ sở sản xuất
-    */
+    //Xử lý event đại lý click xác nhận là đã nhận đc sản phẩm mới từ cơ sở sản xuất
     receiveProduct(event) {
         const productId = event.parentNode.firstChild.innerHTML;
         const xmlHttp = new XMLHttpRequest();
@@ -33,7 +31,9 @@ class NewProduct extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -42,6 +42,7 @@ class NewProduct extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Load lần đầu
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -90,9 +91,7 @@ class NewProduct extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI thông báo sản mới được cơ sở sản xuất gửi đến đại lý
-    */
+    // UI của agent gồm all sản phẩm được các CSSX gửi đến agent mà agent chưa nhận
     render() {
         return(
             <table className='tableProductLine'>

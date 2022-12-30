@@ -7,8 +7,11 @@ class Received extends React.Component {
         super(props);
         this.show = this.show.bind(this);
     }
+    
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -17,6 +20,7 @@ class Received extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Lấy ra danh sách sản phẩm lỗi, cũ mà producer đã nhận từ agent, service
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -72,9 +76,7 @@ class Received extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách sản phẩm lỗi mà producer đã tiếp nhận từ service
-    */
+    // UI danh sách sản phẩm lỗi/cũ mà producer đã tiếp nhận
     render() {
         return(
             <table className='tableProductLine'>

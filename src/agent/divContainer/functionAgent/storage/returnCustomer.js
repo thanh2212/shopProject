@@ -9,10 +9,7 @@ class ReturnCustomer extends React.Component {
         this.show = this.show.bind(this);
     }
 
-    /*
-        Xử lý event đại lý click xác nhận là đã trả lại sản phẩm (đã được bảo hành xong) cho khách hàng và procut đó sẽ chuyển
-        vào mục đã bán
-    */
+    // Trả sản phẩm bảo hành xong về cho khách hàng
     returnCustomer(event) {
         var prId = event.parentNode.firstChild.innerHTML;
         const xmlHttp = new XMLHttpRequest();
@@ -34,7 +31,9 @@ class ReturnCustomer extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -43,6 +42,7 @@ class ReturnCustomer extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Load lần đầu lấy ra các sản phẩm đã bảo hành xong đang trong kho của agent
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -94,9 +94,7 @@ class ReturnCustomer extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI all product đã bảo hành xong và đang trả lại cho khách hàng
-    */
+    // UI các sản phẩm đã bảo hành xong mà trong kho của agent để agent có thể trả lại cho khách hàng
     render() {
         return(
             <table className='tableProductLine'>

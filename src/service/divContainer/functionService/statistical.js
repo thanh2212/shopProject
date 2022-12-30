@@ -17,9 +17,10 @@ class Statistical extends React.Component {
         this.failAndYear = this.failAndYear.bind(this);
     }
 
+    // Thay đổi kiểu thống kê
     changeShow() {
-        const type = document.getElementById('statisticalType').value;
-        const time = document.getElementById('statisticalTime').value;
+        const type = document.getElementById('statisticalType').value; // Lấy ra select thống kê theo kiểu
+        const time = document.getElementById('statisticalTime').value; // Lấy ra select thống kê theo thời gian
         switch(type) {
             case 'service': {
                 switch(time) {
@@ -47,6 +48,7 @@ class Statistical extends React.Component {
         }
     }
 
+    // Thống kê theo các sản phẩm cần bảo hành theo quý
     serviceAndQuarter() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -54,8 +56,10 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ quý/năm và số lượng sản phẩm quý/năm mà server gửi về
                     var arrQuarter = [];
                     var arrAmount = [];
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
@@ -93,6 +97,7 @@ class Statistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê theo các sản phẩm cần bảo hành theo năm
     serviceAndYear() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -100,10 +105,12 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
                     }
+                    // 2 mảng lưu trữ năm và số lượng sản phẩm từng năm mà server trả về
                     var years = [], amount = [];
                     for (var i = 0; i < data.length; i++) {
                         years[i] = data[i].year;
@@ -138,6 +145,7 @@ class Statistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê sản phẩm bảo hành thành công theo tháng
     fixedAndMonth() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -145,8 +153,10 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ tháng/năm và số lượng sản phẩm từng tháng/năm mà server trả về
                     var arrMonth = [];
                     var arrAmount = [];
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
@@ -186,6 +196,7 @@ class Statistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê sản phẩm bảo hành thành công theo quý
     fixedAndQuarter() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -193,8 +204,10 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ quý/năm và số lượng sản phẩm từng quý/năm mà server trả về
                     var arrQuarter = [];
                     var arrAmount = [];
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
@@ -234,6 +247,7 @@ class Statistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê sản phẩm bảo hành thành công theo năm
     fixedAndYear() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -241,10 +255,12 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
                     }
+                    // 2 mảng lưu trữ năm và số lượng sản phẩm từng năm mà server trả về
                     var years = [], amount = [];
                     for (var i = 0; i < data.length; i++) {
                         years[i] = data[i].year;
@@ -279,6 +295,7 @@ class Statistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê sản phẩm bảo hành thất bại theo tháng
     failAndMonth() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -286,8 +303,10 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ tháng/năm và số lượng sản phẩm từng tháng/năm mà server trả về
                     var arrMonth = [];
                     var arrAmount = [];
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
@@ -327,6 +346,7 @@ class Statistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê sản phẩm bảo hành thất bại theo quý
     failAndQuarter() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -334,8 +354,10 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ quý/năm và số lượng sản phẩm từng quý/năm mà server trả về
                     var arrQuarter = [];
                     var arrAmount = [];
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
@@ -375,6 +397,7 @@ class Statistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê sản phẩm bảo hành thất bại theo năm
     failAndYear() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -382,10 +405,12 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
                     }
+                    // 2 mảng lưu trữ năm và số lượng sản phẩm từng năm mà server trả về
                     var years = [], amount = [];
                     for (var i = 0; i < data.length; i++) {
                         years[i] = data[i].year;
@@ -428,8 +453,10 @@ class Statistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ tháng/năm và số lượng sản phẩm từng tháng/năm mà server trả về
                     var arrMonth = [];
                     var arrAmount = [];
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
@@ -468,9 +495,8 @@ class Statistical extends React.Component {
         xmlHttp.open('GET', URL + '/auth/list_month_erservice?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
-    /*
-      UI theo dõi sản phẩm (tương ứng với mục theo dõi trong thanh menu)  
-    */
+    
+    // UI thống kê sản phẩm của service
     render() {
 
         return (

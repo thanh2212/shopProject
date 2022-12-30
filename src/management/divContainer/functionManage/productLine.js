@@ -3,6 +3,7 @@ import {URL} from "../../../url"
 
 class ProductLine extends React.Component {
 
+    // Load lần đầu lấy ra all dòng sản phẩm
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -43,9 +44,7 @@ class ProductLine extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI dòng sản phẩm (ứng với mục dòng sản phẩm trong thanh menu)  
-    */
+    // UI dòng sản phẩm của ban quản lý
     render() {
         return (
             <table className='tableProductLine'>

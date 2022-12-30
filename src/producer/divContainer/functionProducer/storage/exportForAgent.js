@@ -8,6 +8,11 @@ class ExportForAgent extends React.Component {
         this.show = this.show.bind(this);
     }
 
+    /*
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
+    */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
         this.props.changeProductId(productId);
@@ -15,6 +20,7 @@ class ExportForAgent extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Lấy ra danh sách sản phẩm đã xuất đi của producer
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -72,6 +78,7 @@ class ExportForAgent extends React.Component {
         xmlHttp.send(null);
     }
 
+    // UI danh sách sản phẩm xuất đi của producer
     render() {
         return(
             <table className='tableProductLine'>

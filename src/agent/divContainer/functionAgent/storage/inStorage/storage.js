@@ -10,8 +10,11 @@ class Storage extends React.Component {
         this.returnProducer = this.returnProducer.bind(this);
         this.changeBackgorund = this.changeBackgorund.bind(this);
     }
+    
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.nextSibling.innerHTML;
@@ -20,16 +23,14 @@ class Storage extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
-    /*
-        Lấy ra các row đã được checked để trả lại cơ sở sản xuất (do lâu không bán được)
-    */
+    // Lấy ra các sản phẩm đã được checked và gửi về producer
     returnProducer(event) {
         event.preventDefault();
-        var error1 = document.getElementsByClassName('errRepair1')[0];
-        var error2 = document.getElementsByClassName('errRepair2')[0];
+        var error1 = document.getElementsByClassName('errRepair1')[0]; // span hiển thị lỗi
+        var error2 = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error1.innerHTML = '';
         error2.innerHTML = '';
-        // Mảng tr có phần tử đầu tiên là th
+        // Mảng tr có phần tử đầu tiên là th => Lấy ra all sản phẩm đc checked
         var tr = document.querySelectorAll("tr");
         var countChecked = 0;
         for (var i = 1; i < tr.length; i++) {
@@ -63,18 +64,16 @@ class Storage extends React.Component {
         }
     }
 
-    /*
-        Xử lý event khi đại lý phân phối nhấn vào tiếp theo để nhập thông tin khách hàng
-    */
+    // Chuyển sang trang nhập thông tin khách hàng
     customerInput(event) {
         event.preventDefault();
-        var error1 = document.getElementsByClassName('errRepair1')[0];
-        var error2 = document.getElementsByClassName('errRepair2')[0];
+        var error1 = document.getElementsByClassName('errRepair1')[0]; // span hiển thị lỗi
+        var error2 = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error1.innerHTML = '';
         error2.innerHTML = '';
         // Mảng tr có phần tử đầu tiên là th
         var tr = document.querySelectorAll("tr");
-        var countChecked = 0;
+        var countChecked = 0; // Đếm số lượng sản phẩm checked
         var products = [];
         var index = 0;
         for (var i = 1; i < tr.length; i++) {
@@ -90,14 +89,13 @@ class Storage extends React.Component {
         }
         if (countChecked === 0) error2.innerHTML = 'Bạn chưa chọn sản phẩm nào';
         else {
+            // Cập nhật các sản phẩm đã checked để bán cho khách hàng và chuyển sang trang customerInput
             this.props.changeProducts(products);
             this.props.changeTypeProfile("Nhập thông tin khách hàng");
         }
     }
 
-    /*
-        Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
-    */
+    // Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
     changeBackgorund(event) {
         var input = event;
         var td = event.parentNode;
@@ -106,6 +104,7 @@ class Storage extends React.Component {
         else td.parentNode.style.background = "white";
     }
 
+    // Load lần đầu list sản phẩm trong kho của agent
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -159,9 +158,7 @@ class Storage extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product trong storage of đại lý và đại lý có thể tick chọn để nhập thông tin khách hàng và bán sản phẩm
-    */
+    // UI sản phẩm trong kho của agent
     render() {
         return(
             <Fragment>

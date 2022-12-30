@@ -10,15 +10,13 @@ class CustomerInput extends React.Component {
         this.back = this.back.bind(this);
     }
 
+    // Quay lại trang phía trước
     back() {
         this.props.changeTypeProfile('Sản phẩm mới');
     }
 
 
-    /*
-        Nhập xong thông tin khách hàng và nhấn vào nút xong thì sản phẩm sẽ thay đổi trạng thái trong csdl và chuyển vào mục
-        đã bán
-    */
+    // Gửi thông tin của khách hàng mua sản phẩm
     customerInput(event) {
         event.preventDefault();
         // products[0] là th
@@ -53,18 +51,13 @@ class CustomerInput extends React.Component {
         }
     }
 
-    /*
-        Khi nhấn vào bỏ 1 sản phẩm trong giỏ hàng của khách hàng thì sản phẩm ấy bị xóa khỏi giỏ hàng
-    */
+    // Bỏ đi sản phẩm trong bảng mua hàng
     delete(event) {
         var tr = event.parentNode;
         tr.parentNode.removeChild(tr);
     }
 
-    /*
-        Hàm thực hiện khi component CustomerInput mới được render. Mục đích là để hiển thị các sản phẩm đã được chọn
-        ở trang trước để bán cho khách hàng
-    */
+    // Hiển thị các sản phẩm đã chọn để bán cho khách hàng trong trang trước là storage
     componentDidMount() {
         var root = this;
         var tbody = document.querySelector("tbody");
@@ -89,9 +82,7 @@ class CustomerInput extends React.Component {
         }
     }
 
-    /*
-      UI nhập thông tin customer 
-    */
+    // UI nhập thông tin khách hàng của agent
     render() {
 
         return (

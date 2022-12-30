@@ -11,6 +11,7 @@ class OldStatistical extends React.Component {
         this.quarter = this.quarter.bind(this);
     }
 
+    // Thay đổi kiểu thống kê
     changeStatisticalType(event) {
         var type = event.target.value;
         switch(type) {
@@ -28,6 +29,7 @@ class OldStatistical extends React.Component {
         }
     }
 
+    // Thống kê theo năm
     year() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -35,11 +37,12 @@ class OldStatistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
                     }
-                    var years = [], amount = [];
+                    var years = [], amount = []; // 2 mảng lưu trữ năm và số lượng sản phẩm từng năm mà server trả về
                     for (var i = 0; i < data.length; i++) {
                         years[i] = data[i].year;
                         amount[i] = data[i].amount;
@@ -73,6 +76,7 @@ class OldStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê theo quý
     quarter() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -80,6 +84,7 @@ class OldStatistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ quý/năm và số lượng sản phẩm từng quý đó mà server trả về
                     var arrQuarter = [];
                     var arrAmount = [];
                     if (data.length === 0) {
@@ -121,6 +126,7 @@ class OldStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê theo tháng
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -128,6 +134,7 @@ class OldStatistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).list;
                     var divChart = document.getElementById("chart");
+                    // 2 mảng lưu trữ tháng/năm và số lượng sản phẩm từng tháng/năm mà server trả về
                     var arrMonth = [];
                     var arrAmount = [];
                     if (data.length === 0) {
@@ -169,9 +176,7 @@ class OldStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-      UI theo dõi sản phẩm (tương ứng với mục theo dõi trong thanh menu)  
-    */
+    // UI thống kê sản phẩm cũ của producer
     render() {
 
         return (

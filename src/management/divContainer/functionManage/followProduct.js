@@ -8,6 +8,11 @@ class FollowProduct extends React.Component {
         this.show = this.show.bind(this);
     }
 
+    /*
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
+    */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
         this.props.changeProductId(productId);
@@ -15,6 +20,7 @@ class FollowProduct extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Load lần đầu lấy ra all sản phẩm trên toàn quốc
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         var root = this;
@@ -111,9 +117,8 @@ class FollowProduct extends React.Component {
         xmlHttp.open('GET', URL + '/manager/all_product?id_user=' + this.props.id, false);
         xmlHttp.send(null);
     }
-    /*
-      UI theo dõi sản phẩm (tương ứng với mục theo dõi trong thanh menu)  
-    */
+    
+    // UI theo dõi toàn bộ sản phẩm trên toàn quốc của ban quản lý
     render() {
         return (
             <table className="tableProductLine">

@@ -119,15 +119,14 @@ class ImportProductBatch extends React.Component {
         else alert('Nhập sản phẩm vào kho thành công!');
    }
 
+   // Xóa sản phẩm khỏi bảng
    delete(tdDelete) {
         var trDelete = tdDelete.parentNode;
         var tbody = document.querySelector('tbody');
         tbody.removeChild(trDelete);
    }
 
-    /*
-        UI producer nhập lô sản phẩm mới sản xuất vào kho
-    */
+    // UI nhập lô sản phẩm vào kho của producer
     render() {
 
         return(

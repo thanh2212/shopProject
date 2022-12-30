@@ -12,6 +12,7 @@ class Storage extends React.Component {
         this.searchAgent = this.searchAgent.bind(this);
     }
 
+    // Lấy keyword mà user nhập vào và gửi request tìm kiếm các agent phù hợp
     searchAgent(event) {
         if (event.keyCode === 13) {
             var keyWord = event.target.value;
@@ -41,6 +42,11 @@ class Storage extends React.Component {
         }
     }
 
+    /*
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
+    */
     show(event) {
         const productId = event.parentNode.firstChild.nextSibling.innerHTML;
         this.props.changeProductId(productId);
@@ -54,7 +60,7 @@ class Storage extends React.Component {
     exportProduct(event) {
         event.preventDefault();
         const agentName = document.getElementById('agentName').value;
-        var error = document.getElementsByClassName('errRepair2')[0];
+        var error = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error.innerHTML = '';
         if (!agentName) {
             error.innerHTML = 'Bạn chưa chọn đại lý'
@@ -62,7 +68,7 @@ class Storage extends React.Component {
         }
         // Mảng tr có phần tử đầu tiên là th
         var tr = document.querySelectorAll("tr");
-        var countChecked = 0;
+        var countChecked = 0; // Đếm số lượng sản phẩm checked
         for (var i = 1; i < tr.length; i++) {
             if (tr[i].firstChild.firstChild.checked) {
                 const prId = tr[i].firstChild.nextSibling.innerHTML;
@@ -96,9 +102,7 @@ class Storage extends React.Component {
         }
     }
 
-    /*
-        Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
-    */
+    // Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
     changeBackgorund(event) {
         var input = event;
         var td = event.parentNode;
@@ -107,6 +111,7 @@ class Storage extends React.Component {
         else td.parentNode.style.background = "white";
     }
 
+    // Lấy ra các sản phẩm mới trong kho của producer
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -167,9 +172,7 @@ class Storage extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product trong storage of producer và producer có thể tick chọn để xuất hàng cho đại lý
-    */
+    // UI danh sách sản phẩm mới trong kho của producer
     render() {
 
         return(

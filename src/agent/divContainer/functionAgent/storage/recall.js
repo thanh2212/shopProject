@@ -11,6 +11,7 @@ class Recall extends React.Component {
         this.searchAgent = this.searchAgent.bind(this);
     }
 
+    // Lấy ra keyword và gửi request lên server tìm kiếm các TTBH
     searchAgent(event) {
         if (event.keyCode === 13) {
             var keyWord = event.target.value;
@@ -41,7 +42,9 @@ class Recall extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.nextSibling.innerHTML;
@@ -50,21 +53,19 @@ class Recall extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
-    /*
-        Xử lý event khi đại lý click vào bảo hành, product đc thay đổi trạng thái trong csdl và chuyển vào mục đem đi bảo hành
-    */
+    // Lấy ra các sản phẩm đc checked và gửi request để chuyển đi bảo hành
     received(event) {
         event.preventDefault();
-        var error = document.getElementsByClassName('errRepair2')[0];
+        var error = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error.innerHTML = '';
         const serviceName = document.getElementById('servicename').value;
         if (!serviceName) {
             error.innerHTML = 'Bạn chưa chọn TTBH'
             return;
         }
-        // Mảng tr có phần tử đầu tiên là th
+        // Mảng tr có phần tử đầu tiên là th => list sản phẩm đưa đi bảo hành
         var tr = document.querySelectorAll("tr");
-        var countChecked = 0;
+        var countChecked = 0; // Đếm số lượng sản phẩm đc checked
         for (var i = 1; i < tr.length; i++) {
             if (tr[i].firstChild.firstChild.checked) {
                 const prId = tr[i].firstChild.nextSibling.innerHTML;
@@ -99,9 +100,7 @@ class Recall extends React.Component {
         }
     }
 
-    /*
-        Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
-    */
+    // Xử lý event khi 1 row đc checked thì chuyển màu vàng ngược lại chuyển về màu ban đầu
     changeBackgorund(event) {
         var input = event;
         var td = event.parentNode;
@@ -110,6 +109,7 @@ class Recall extends React.Component {
         else td.parentNode.style.background = "white";
     }
 
+    // Load lần đầu lấy ra list sản phẩm đang đc triệu hồi của 1 đại lý
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -170,10 +170,7 @@ class Recall extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product đang được triệu hồi và khi đại lý nhận được từ khách hàng thì tick chọn và chọn vào
-        nút đem đi bảo hành
-    */
+    // UI các sản phẩm đang được triệu hồi của 1 agent
     render() {
 
         return(

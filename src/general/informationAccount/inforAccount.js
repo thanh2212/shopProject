@@ -5,6 +5,10 @@ class InforAccount extends React.Component {
 
     constructor(props) {
         super(props);
+        /* 
+            các state này lưu trữ thông tin tê, địa chỉ, sđt, thông tin thêm mà server gửi về
+            => so sánh với thông tin user nhập vào để kiểm tra có thay đổi hay không
+        */
         this.state = {
             constName: '',
             constAddress: '',
@@ -15,15 +19,20 @@ class InforAccount extends React.Component {
         this.edit = this.edit.bind(this);
     }
 
+    /*
+        Xử lý event user onclick vào icon edit => Chuyển value readOnly của input tương ứng thành false để user
+        có thể thay đổi thông tin
+    */
     edit(event) {
         var inputEdit = event.target.previousSibling;
         inputEdit.readOnly = false;
     }
 
+    // Lấy ra các thông tin user nhập vào cần thay đổi thực hiện kiểm tra và gửi request lên server
     update(event) {
         event.preventDefault();
         var root = this;
-        var error = document.getElementsByClassName('errProfile')[0];
+        var error = document.getElementsByClassName('errProfile')[0]; // span hiển thị lỗi
         error.innerHTML = '';
         const name = document.getElementById('name').value;
         const address = document.getElementById('address').value;
@@ -34,6 +43,8 @@ class InforAccount extends React.Component {
             error.innerHTML = 'Bạn chưa nhập hết các thông tin cần chỉnh sửa';
             return;
         }
+
+        // So sánh với các state nếu không có thay đổi gì thì hiện thông báo. Ngược lại có thay đổi thì gửi request lên server
         if (name === this.state.constName && address === this.state.constAddress && phone === this.state.constPhone
             && description === this.state.constDes) {
                 error.innerHTML = 'Bạn chưa thay đổi thông tin nào';
@@ -45,6 +56,7 @@ class InforAccount extends React.Component {
             if (this.responseText === 4) {
                 if (this.status === 200) {
                     error.innerHTML = '';
+                    // Thành công thì cập nhật giá trị các state
                     root.setState({
                         constName: name,
                         constAddress: address,
@@ -66,6 +78,7 @@ class InforAccount extends React.Component {
         alert('Thay đổi thông tin thành công')
     }
 
+    // Lấy ra thông tin chi tiết của account đang đăng nhập
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -110,6 +123,7 @@ class InforAccount extends React.Component {
         xmlHttp.send(null);
     }
 
+    // UI thông tin chi tiết account đang đăng nhập
     render() {
 
         return(

@@ -25,7 +25,7 @@
     margin-bottom: 20px;
 }
 
-/*2 <input> username và password*/
+/*<input> trong div*/
 .login [name="password"], .login [name="userName"], .login [id="email"], .login [id="otp"], .login [id="password"], .login [id="repassword"] {
     padding: 6px 12px;
     border: 1px solid grey;
@@ -46,6 +46,7 @@
     cursor: pointer;
 }
 
+/*Thẻ a trong .login*/
 .login a {
     display: block;
     margin-left: 10%;

@@ -7,8 +7,11 @@ class Repairing extends React.Component {
         super(props);
         this.show = this.show.bind(this);
     }
+    
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -17,6 +20,7 @@ class Repairing extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Load lần đầu lấy ra các sản phẩm đang đc đưa đi bảo hành của 1 agent
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -60,9 +64,7 @@ class Repairing extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product đang được sửa chữa bảo hành ở trung tâm bảo hành hoặc đang trên đường đến trung tâm bảo hành
-    */
+    // UI các sản phẩm đang đưa đi bảo hành của 1 agent
     render() {
 
         return(

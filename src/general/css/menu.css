@@ -15,6 +15,7 @@
     overflow-y: auto;
 }
 
+/*Chữ BigCorp trong thanh menu*/
 .divMenu > h1 {
     position: fixed;
     top: 0;
@@ -26,6 +27,7 @@
     color: white;
 }
 
+/*all thẻ li*/
 #menu li {
     list-style-type: none;
     padding: 20px;

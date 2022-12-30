@@ -8,10 +8,19 @@ class PreliminaryInfor extends React.Component {
         this.back = this.back.bind(this);
     }
 
+    // Quay lại trang trước là xem chi tiết sản phẩm (Details)
     back() {
         this.props.changeTypeProfile('Xem');
     }
 
+    /*
+        Lấy ra thông tin của tài khoản khác thông qua name/username của tài khoản đó
+            - name: các tài khoản agent, service, producer sử dụng name để lấy thông tin vì khi đó thì account cần
+                lấy thông tin đã có name rồi
+            - username: chỉ ban quản lý đc sử dụng username của tài khoản khác để xem vì chỉ có ban quản lý ms biết đc
+                username của tài khoản khác (còn nhứng người khác k có) và có thể account đó ms cấp nên chưa có name
+                => k thể lấy thông qua name
+    */
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -43,10 +52,8 @@ class PreliminaryInfor extends React.Component {
         );
     }
 
+    // UI thông tin sơ bộ của 1 account => use để các account xem thông tin của nhau
     render() {
-        /*
-            UI profile sơ bộ của tài khoản cho tài khoản khác xem
-        */
         return(
             <Fragment>
                 <form className="profile">

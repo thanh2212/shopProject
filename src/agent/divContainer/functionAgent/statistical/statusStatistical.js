@@ -11,6 +11,7 @@ class StatusStatistical extends React.Component {
         this.year = this.year.bind(this);
     }
 
+    // Thay đổi kiểu thống kê
     changeStatisticalType(event) {
         var type = event.target.value;
         switch(type) {
@@ -28,6 +29,7 @@ class StatusStatistical extends React.Component {
         }
     }
 
+    // Thống kê theo quý
     quarter() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -76,6 +78,7 @@ class StatusStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
+    // Thống kê theo năm
     year() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -121,7 +124,7 @@ class StatusStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
-    // Thống kê theo cần bảo hành và theo tháng
+    // Load lần đầu là thống kê theo tháng
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -170,9 +173,7 @@ class StatusStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-      UI theo dõi sản phẩm (tương ứng với mục theo dõi trong thanh menu)  
-    */
+    // UI thống kê sản phẩm nhập về của 1 agent
     render() {
 
         return (

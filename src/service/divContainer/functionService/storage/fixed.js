@@ -9,7 +9,9 @@ class Fixed extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.innerHTML;
@@ -18,6 +20,7 @@ class Fixed extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
+    // Lấy ra danh sách sản phẩm bảo hành thành công
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -69,6 +72,7 @@ class Fixed extends React.Component {
         xmlHttp.send(null);
     }
 
+    // UI danh sách sản phẩm bảo hành thành công của service
     render() {
         return(
             <table className='tableProductLine'>

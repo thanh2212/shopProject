@@ -12,6 +12,7 @@ class Sold extends React.Component {
         this.searchAgent = this.searchAgent.bind(this);
     }
 
+    // Lấy ra keyword và gửi request để tìm kiếm các TTBH
     searchAgent(event) {
         if (event.keyCode === 13) {
             var keyWord = event.target.value;
@@ -42,7 +43,9 @@ class Sold extends React.Component {
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha truyền vào
+        - changeProductId: thay đổi id sản phẩm hiển thị
+        - changeBackType: thay đổi component để có thể quay lại trang phía trước
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
         const productId = event.parentNode.firstChild.nextSibling.innerHTML;
@@ -51,18 +54,16 @@ class Sold extends React.Component {
         this.props.changeTypeProfile('Xem');
     }
 
-    /*
-        Xử lý event khi đại lý click vào triệu hồi, product đc thay đổi trạng thái trong csdl và chuyển vào mục triệu hồi
-    */
+    // Lấy ra các sản phẩm đã checked để triệu hồi
     recall(event) {
         event.preventDefault();
-        var error1 = document.getElementsByClassName('errRepair1')[0];
-        var error2 = document.getElementsByClassName('errRepair2')[0];
+        var error1 = document.getElementsByClassName('errRepair1')[0]; // span hiển thị lỗi
+        var error2 = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error1.innerHTML = '';
         error2.innerHTML = '';
         // Mảng tr có phần tử đầu tiên là th
         var tr = document.querySelectorAll("tr");
-        var countChecked = 0;
+        var countChecked = 0; // Số lượng sản phẩm checked
         for (var i = 1; i < tr.length; i++) {
             if (tr[i].firstChild.firstChild.checked) {
                 const prId = tr[i].firstChild.nextSibling.innerHTML;
@@ -85,6 +86,7 @@ class Sold extends React.Component {
         if (countChecked === 0) error1.innerHTML = 'Bạn chưa chọn sản phẩm nào';
         else {
             alert("Thành công!\nSản phẩm đã được chuyển vào mục triệu hồi");
+            // Xóa các sản phẩm đã checked
             var tbody = document.querySelector('tbody');
             for (var j = tr.length - 1; j > 0; j--) {
                 if (tr[j].firstChild.firstChild.checked) {
@@ -94,13 +96,11 @@ class Sold extends React.Component {
         }
     }
 
-    /*
-        Xử lý event khi đại lý click vào bảo hành, product đc thay đổi trạng thái trong csdl và chuyển vào mục đem đi bảo hành
-    */
+    // Lấy ra các sản phẩm checked và đưa đi bảo hành
     service(event) {
         event.preventDefault();
-        var error1 = document.getElementsByClassName('errRepair1')[0];
-        var error2 = document.getElementsByClassName('errRepair2')[0];
+        var error1 = document.getElementsByClassName('errRepair1')[0]; // span hiển thị lỗi
+        var error2 = document.getElementsByClassName('errRepair2')[0]; // span hiển thị lỗi
         error1.innerHTML = '';
         error2.innerHTML = '';
         const serviceName = document.getElementById('servicename').value;
@@ -110,7 +110,7 @@ class Sold extends React.Component {
         }
         // Mảng tr có phần tử đầu tiên là th
         var tr = document.querySelectorAll("tr");
-        var countChecked = 0;
+        var countChecked = 0; // Đếm số lượng sản phẩm checked
         for (var i = 1; i < tr.length; i++) {
             if (tr[i].firstChild.firstChild.checked) {
                 const prId = tr[i].firstChild.nextSibling.innerHTML;
@@ -134,6 +134,7 @@ class Sold extends React.Component {
         if (countChecked === 0) error2.innerHTML = 'Bạn chưa chọn sản phẩm nào';
         else if (error2.innerHTML === '') {
             alert("Thành công!\nSản phẩm đã được chuyển vào mục đem đi bảo hành\nBạn hãy chờ trung tâm bảo hành xác nhận");
+            // Xóa các sản phẩm đã checked
             var tbody = document.querySelector('tbody');
             for (var j = tr.length - 1; j > 0; j--) {
                 if (tr[j].firstChild.firstChild.checked) {
@@ -154,6 +155,7 @@ class Sold extends React.Component {
         else td.parentNode.style.background = "white";
     }
 
+    // Load lần đầu lấy ra các sản phẩm đã bán trong tay khách hàng
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -209,9 +211,7 @@ class Sold extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-        UI danh sách all product đã bán của đại lý và đại lý có thể tick chọn để triệu hồi hoặc đem đi bảo hành
-    */
+    // UI các sản phẩm đã bán mà ở trong tay khách hàng
     render() {
 
         return(

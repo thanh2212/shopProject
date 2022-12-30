@@ -10,10 +10,12 @@ class Profile extends React.Component {
         this.back = this.back.bind(this);
     }
 
+    // Quay lại trang trước là trang quản lý (manageAccount)
     back() {
         this.props.changeTypeProfile('Quản lý');
     }
 
+    // Thu hồi tài khoản thông qua username của tài khoản đó
     deleteAccount(event) {
         event.preventDefault();
         var root = this;
@@ -22,6 +24,7 @@ class Profile extends React.Component {
             if (this.readyState === 4) {
                 if (this.status === 200) {
                     alert('Thu hồi tài khoản thành công!');
+                    // Thành công thì quay lại trang trước
                     root.back();
                 }
             }
@@ -33,6 +36,7 @@ class Profile extends React.Component {
         )
     }
 
+    // Load lần đầu lấy ra thông tin chi tiết của account cần xem thông qua username của account đó
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -66,11 +70,8 @@ class Profile extends React.Component {
         xmlHttp.send(null);
     }
 
+    // UI thông tin chi tiết của 1 account khác để tài khoản ban quản lý xem
     render() {
-
-        /*
-            UI profile chi tiết của từng tài khoản để ban điều hành vào xem
-        */
         return(
             <Fragment>
                 <form className="profile" onSubmit={this.deleteAccount}>

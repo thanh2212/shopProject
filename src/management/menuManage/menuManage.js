@@ -3,12 +3,9 @@ import { Navigate } from "react-router-dom";
 
 class MenuManage extends React.Component {
 
-    /*
-        logOut để xác định xem user vẫn đang hoạt động hay đã đăng xuất (false: đang hoạt động, true: đã đăng xuất),
-        value khởi tạo mặc định là false
-    */
     constructor(props) {
         super(props);
+        // Xác định xem user đang hoạt động hay đăng xuất
         this.state = {
             logOut: false
         }
@@ -19,21 +16,14 @@ class MenuManage extends React.Component {
         this.changeViewMenu = this.changeViewMenu.bind(this);
     }
 
-    /*
-      Xử lý trường hợp user onclick vào 1 mục trong menu mà mục đó chứa các mục con khác. Hàm này chuyển kiểu display của mục đó
-      từ none thành block và ngược lại
-    */
+    // Ẩn/ hiện thanh menu
     show(event) {
         var ul = event.target.nextSibling;
         if (ul.style.display === "block") ul.style.display = "none";
         else ul.style.display = "block";
     }
 
-    /*
-        Khi user onclick vào 1 mục (các mục mà k chứa mục con nào nữa) trong menu thì nó sẽ thay đổi biến mà nó nhận 
-        đc từ component khác truyền vào cho nó thông qua hàm đc truyền vào là changeTypeFunc(). Nếu onClick mục đăng xuất thì
-        thay đổi state.logOut thành true
-    */
+    // Thay đổi kiểu hiện thị. Trường hợp kiểu hiện thị là đăng xuất thì chuyển logOut thành true để đăng xuất
     showChange(event) {
         if (event.target.innerHTML === "Đăng xuất") {
             this.setState({
@@ -43,16 +33,12 @@ class MenuManage extends React.Component {
         else this.props.changeTypeFunc(event.target.innerHTML)
     }
 
-    /*
-        Hover vào mục nào trong menu thì mục đó chuyển thành chữ màu đen
-    */
+    // Hover vào mục nào trong menu thì mục đó chuyển thành chữ màu đen
     hover(event) {
         event.target.style.color = "black";
     }
 
-    /*
-        Không hover vào mục trong menu nữa thì mục đó chuyển thành chữ màu ban đầu
-    */
+    // Không hover vào mục trong menu nữa thì mục đó chuyển thành chữ màu ban đầu
     unHover(event) {
         event.target.style.color = "grey";
     }
@@ -76,14 +62,10 @@ class MenuManage extends React.Component {
 
     render() {
 
-        /*
-            Kiểm tra user đang hoạt động hay đăng xuất, if đăng xuất thì chuyển về UI login
-        */
+        // Kiểm tra user đang hoạt động hay đăng xuất, if đăng xuất thì chuyển về UI login
         if (this.state.logOut) return <Navigate to='/' />
 
-        /*
-            Menu của UI ban quản lý
-        */
+        // Menu của UI ban quản lý
         return (
             <div className="divMenu">
                 <h1>BigCorp</h1>

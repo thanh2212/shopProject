@@ -10,12 +10,14 @@ class ErrorStatistical extends React.Component {
         this.productLine = this.productLine.bind(this);
     }
 
+    // Thay đổi kiểu thống kê
     changeStatisticalType(event) {
         var type = event.target.value;
         if (type === 'agent') this.componentDidMount();
         else this.productLine();
     }
 
+    // Thống kê sản phẩm lỗi theo dòng sản phẩm
     productLine() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -23,6 +25,7 @@ class ErrorStatistical extends React.Component {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText);
                     var divChart = document.getElementById("chartCircle");
+                    // Nếu server trả về data rỗng thì xóa vùng chưa biểu đồ
                     if (data.productLine.length === 0) {
                         if (divChart.firstChild) divChart.removeChild(divChart.firstChild);
                         return;
@@ -49,6 +52,7 @@ class ErrorStatistical extends React.Component {
         xmlHttp.send(null); 
     }
 
+    // Thống kê sản phẩm lỗi theo đại lý
     componentDidMount() {
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
@@ -82,9 +86,7 @@ class ErrorStatistical extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-      UI theo dõi sản phẩm (tương ứng với mục theo dõi trong thanh menu)  
-    */
+    // UI thống kê sản phẩm lỗi của producer
     render() {
 
         return (

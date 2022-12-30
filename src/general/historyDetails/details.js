@@ -9,15 +9,17 @@ class Details extends React.Component {
         this.back = this.back.bind(this);
     }
 
+    // Quay lại trang trước
     back() {
         this.props.changeTypeProfile(this.props.backType);
     }
 
     /*
-        Thay đổi content hiển thị bằng cách gọi function đc cha là FunctionManage truyền vào
+        - changeUserName: thay đổi name tài khoản khác để hiển thị
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
     */
     show(event) {
-        // Lấy value mục status để xác định xem là khách hàng hay là kho
+        // Lấy value mục status để xác định xem là khách hàng hay là kho => Gửi request tương ứng
         var status = event.parentNode.firstChild.innerHTML;
         switch (status) {
             case 'Đã bán': case 'Lỗi cần triệu hồi': case 'Đã trả lại cho khách hàng': {
@@ -32,8 +34,10 @@ class Details extends React.Component {
         }
     }
 
+    // Lấy ra thông tin chi tiết + lịch sử của sản phẩm
     componentDidMount() {
         var root = this;
+        // Thông tin chi tiết sản phẩm
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
             if (this.readyState === 4) {
@@ -126,6 +130,7 @@ class Details extends React.Component {
         xmlHttp.open('GET', URL + '/auth/infor_product?id_product=' + this.props.productId, false);
         xmlHttp.send(null);
 
+        // Lấy ra lịch sử vòng đời của sản phẩm
         const xmlHttpHistory = new XMLHttpRequest();
         xmlHttpHistory.onreadystatechange = function() {
             if (this.readyState === 4) {
@@ -173,11 +178,12 @@ class Details extends React.Component {
         xmlHttpHistory.send(null);
     }
 
+    /*
+        UI thống tin chi tiết + lịch sử vòng đời của sản phẩm gồm 2 form:
+            - form thứ nhất: thông tin chi tiết sản phẩm
+            - form thứ hai: lịch sử vòng đời sản phẩm
+    */
     render() {
-
-        /*
-            UI profile chi tiết lịch sử của từng sản phẩm để user vào xem
-        */
         return(
             <Fragment>
                 <form className="profile">

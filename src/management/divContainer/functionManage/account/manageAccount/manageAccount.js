@@ -8,12 +8,17 @@ class ManageAccount extends React.Component {
         this.show = this.show.bind(this);
     }
 
+    /*
+        - changeUserName: thay đổi username 
+        - changeTypeProfile: Chuyển sang xem chi tiết sản phẩm (Details)
+    */
     show(event) {
         const userName = event.parentNode.firstChild.innerHTML;
         this.props.changeUserName(userName);
         this.props.changeTypeProfile('Chi tiết');
     }
 
+    // Load lần đầu lấy ra danh sách các account đã cấp
     componentDidMount() {
         var root = this;
         const xmlHttp = new XMLHttpRequest();
@@ -69,9 +74,7 @@ class ManageAccount extends React.Component {
         xmlHttp.send(null);
     }
 
-    /*
-      UI quản lý tài khoản (ứng với mục quản lý (mục này là mục con của mục quản lý tài khoản trong thanh menu))  
-    */
+    // UI quản lý account gồm các account đã cấp của ban quản lý
     render() {
 
         return (

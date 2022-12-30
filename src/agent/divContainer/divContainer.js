@@ -23,8 +23,11 @@ class DivContainer extends React.Component {
 
     /*
       UI của đại lý:
-      <FunctionManage> được truyền vào 1 tham số để xác định xem sẽ hiển thị ra content gì (content này tương ứng với
-        mục gì đang được chọn trên thanh menu) và 1 hàm để thay đổi giá trị của tham số đó
+        - typeFunction: xác định component sẽ hiển thị
+        - changeType: thay đổi typeFunction
+        - arrProduct: lưu trữ các sản phẩm đc checked để bán cho khách hàng
+        - changeProducts: thay đổi arProduct
+        - id: id của account
     */
     render() {
         return(
@@ -47,9 +50,9 @@ class FunctionAgent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            productId: 'none',
-            userName: 'none',
-            backType: 'none'
+            productId: 'none', // lưu trữ id sản phẩm được hiển thị
+            userName: 'none', // lưu trữ username tài khoản khác để xem
+            backType: 'none' // lưu trữ trang quay lại
         }
         this.changeProductId = this.changeProductId.bind(this);
         this.changeUserName = this.changeUserName.bind(this);
@@ -75,8 +78,9 @@ class FunctionAgent extends React.Component {
     }
 
     render() {
-        var type = this.props.typeFunction;
+        var type = this.props.typeFunction; // Kiểu hiển thị
 
+        // Hiển thị component tương ứng với type mà DivContainer truyền vào
         switch(type) {
             case "Sản phẩm mới": return <Storage changeTypeProfile={this.props.changeType} id={this.props.id}
                 changeProductId={this.changeProductId} changeProducts={this.props.changeProducts}

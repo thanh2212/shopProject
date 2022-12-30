@@ -6,8 +6,8 @@ class Agent extends React.Component {
     constructor(props) {
         super(props);
         /*
-            typeFunction: để xác định UI sẽ hiển thị mục nào trong menu
-            arrProduct: use để storage truyền danh sách sản phẩm đc chọn từ trong kho vào customerInput
+            typeFunction: để xác định UI sẽ hiển thị component nào
+            arrProduct: lưu trữ danh sách sản phẩm đc checked để bán cho khách hàng
         */
         this.state = {
             typeFunction: "Sản phẩm mới về",
@@ -17,18 +17,12 @@ class Agent extends React.Component {
         this.productsSellForCustomer = this.productsSellForCustomer.bind(this);
     }
 
-    /*
-      Thay đổi giá trị của state.typeFunction  
-    */
     changeTypeFunction(type) {
         this.setState({
             typeFunction: type
         })
     }
 
-    /*
-        Thay đổi giá trị của state.arrProduct
-    */
     productsSellForCustomer(arr) {
         this.setState({
             arrProduct: arr
@@ -37,10 +31,8 @@ class Agent extends React.Component {
 
     /*
       Trang UI của đại lý gồm:
-        + 1 div container chứa all information của trang, nó đc truyền vào 1 tham số để thay đổi UI hiển thị
-         tùy theo user chọn mục nào trong menu và 1 hàm (hàm này use để thay đổi tham số)
-        + 1 menu chung cho ban quản lý, nó đc truyền vào 1 hàm (hàm này use để thay đổi tham số)
-        Note: hàm truyền vào trong <div> và menu là chung và nó là changetypeFunction()
+        + 1 div container chứa all information của trang
+        + 1 menu chung cho ban quản lý
     */
     render() {
         return(
