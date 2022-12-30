@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import {URL} from "../../../url"
+import {URL} from "../../../url";
 
 class Statistical extends React.Component {
 
@@ -13,15 +13,16 @@ class Statistical extends React.Component {
     }
 
     componentDidMount() {
-        var tbody = document.querySelector('tbody');
-        var arrTr = document.querySelectorAll('tr');
-        for (var i = 1; i < arrTr.length; i++) tbody.removeChild(arrTr[i]);
+        var table = document.querySelector('table');
+        var oldTbody = document.querySelector('tbody');
+        table.removeChild(oldTbody);
         const type = document.querySelector('select').value;
         const xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() {
             if (this.readyState === 4) {
                 if (this.status === 200) {
                     const data = JSON.parse(this.responseText).listProduct;
+                    var tbody = document.createElement('tbody');
                     for (var i = 0; i < data.length; i++) {
                         if (data[i] === null) continue;
                         var tr = document.createElement('tr');
@@ -54,6 +55,7 @@ class Statistical extends React.Component {
                         tr.appendChild(amount);
                         tbody.appendChild(tr);
                     }
+                    table.appendChild(tbody);
                 } else alert("ERROR!\n" + this.status);
             }
         }
@@ -84,10 +86,9 @@ class Statistical extends React.Component {
                     </select>
                 </div>
                 <table className='tableProductLine'>
-                    <caption>Các dòng sản phẩm của công ty</caption>
                     <thead>
                         <tr>
-                            <th>Id</th>
+                            <th className="columnId">Id</th>
                             <th>Tên</th>
                             <th>Trạng thái</th>
                             <th>Vị trí</th>
@@ -95,6 +96,7 @@ class Statistical extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
+                        
                     </tbody>
                 </table>
             </Fragment>
