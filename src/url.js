@@ -1,3 +1,3 @@
-const URL = "http://localhost:8000";
+const URL = "https://big-corp-ochre.vercel.app";
 
 export { URL }
